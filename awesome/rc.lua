@@ -306,15 +306,19 @@ globalkeys = awful.util.table.join(
         mypromptbox[mouse.screen],
         awful.util.spawn, awful.completion.shell,
         awful.util.getdir("cache") .. "/history")
-        end),
+    end),
 
     awful.key({modkey}, "F4", function()
         awful.prompt.run({prompt = "Run Lua code: "},
         mypromptbox[mouse.screen],
         awful.util.eval, nil,
         awful.util.getdir("cache") .. "/history_eval")
-        end)
-    )
+    end),
+
+    awful.key({modkey}, "b", function ()
+        mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+    end)
+)
 
 --{{{Client awful tagging: this is useful to tag some clients and then do stuff
 -- like move to tag on them
