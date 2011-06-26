@@ -9,3 +9,5 @@ Besonderheiten
 --------------
 
 - Shifty-Support
+- modkey + b: Statusleiste togglen
+- Autofokus der Clients mit Maus
