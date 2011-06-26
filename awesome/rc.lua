@@ -13,14 +13,9 @@ require("shifty")
 print("Entered rc.lua: " .. os.time())
 
 -- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
--- The default is a dark theme
-theme_path = "/usr/share/awesome/themes/default/theme.lua"
--- Uncommment this for a lighter theme
--- theme_path = "/usr/share/awesome/themes/sky/theme"
 
 -- Actually load theme
-beautiful.init(theme_path)
+beautiful.init(awful.util.getdir("config") .. "/themes/syranez/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 browser = "firefox"
