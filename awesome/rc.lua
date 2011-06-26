@@ -15,7 +15,7 @@ print("Entered rc.lua: " .. os.time())
 -- {{{ Variable definitions
 
 -- Actually load theme
-beautiful.init(awful.util.getdir("config") .. "/themes/syranez/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/nice-and-clean-theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 browser = "firefox"
@@ -389,7 +389,7 @@ end)
 
 client.add_signal("manage", function (c, startup)
     -- Add a titlebar
-    -- awful.titlebar.add(c, { modkey = modkey })
+    awful.titlebar.add(c, { modkey = modkey })
 
     -- Enable sloppy focus
     c:add_signal("mouse::enter", function(c)
