@@ -8,6 +8,10 @@ require("beautiful")
 require("naughty")
 -- shifty - dynamic tagging library
 require("shifty")
+-- MacOSX-Expose
+-- Siehe auch: https://awesome.naquadah.org/wiki/Revelation
+-- Source: http://github.com/bioe007/awesome-configs/blob/master/revelation.lua
+require("revelation")
 
 -- useful for debugging, marks the beginning of rc.lua exec
 print("Entered rc.lua: " .. os.time())
@@ -15,7 +19,7 @@ print("Entered rc.lua: " .. os.time())
 -- {{{ Variable definitions
 
 -- Actually load theme
-beautiful.init(awful.util.getdir("config") .. "/themes/nice-and-clean-theme/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/syranez/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 browser = "firefox"
@@ -295,7 +299,7 @@ globalkeys = awful.util.table.join(
         function() awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({modkey}, "F1", function()
+    awful.key({modkey}, "p", function()
         awful.prompt.run({prompt = "Run: "},
         mypromptbox[mouse.screen],
         awful.util.spawn, awful.completion.shell,
@@ -311,7 +315,9 @@ globalkeys = awful.util.table.join(
 
     awful.key({modkey}, "b", function ()
         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
-    end)
+    end),
+
+    awful.key({modkey}, "e", revelation.revelation)
 )
 
 --{{{Client awful tagging: this is useful to tag some clients and then do stuff
