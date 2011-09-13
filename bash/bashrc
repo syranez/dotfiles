@@ -1,0 +1,38 @@
+# /etc/skel/.bashrc
+
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+if [ -f /usr/share/mc/mc.gentoo ]; then
+    /usr/share/mc/mc.gentoo
+fi
+
+[[ -f /etc/profile.d/bash-completion ]] &&
+    source /etc/profile.d/bash-completion
+
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
+PROMPT_DIRTRIM=2
+PS1='\[\033[1;34m\]\u \[\033[1;32m\]@\[\033[1;34m\] \h \[\033[1;30m\]::\[\033[1;37m\] \w \[\033[1;30m\]%%\[\033[0m\] '
+
+# Programme aus [/usr]/sbin in den Pfad nehmen
+# Damit wird aus /usr/sbin/ifconfig ein ifconfig
+PATH=/sbin:/usr/sbin:$PATH
+
+# Vim als Editor setzen.
+EDITOR="/usr/bin/vim"
+
+alias lsd='ls -X --group-directories-first'
+
+# marathon-spezifische Definitionen einbinden.
+# Damit kann die .bashrc auf Fremdsystem kopiert werden ohne, dass marathon-spezifische Definitionen veröffentlicht werden.
+[[ -f ~/.bashrc_marathon ]] && . ~/.bashrc_marathon
+
+# Vi-Mode für Bash
+set -o vi
